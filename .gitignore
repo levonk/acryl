@@ -17,3 +17,9 @@ release-artifacts/
 # Nix build outputs
 /result
 /result-*
+
+# Agent tooling artifacts (local only, not project config)
+/.agents/
+/.devin/
+/agent/
+skills-lock.json
