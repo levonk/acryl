@@ -14,3 +14,6 @@ dsh-community-market/lib/
 acryl-web/lib/
 release-artifacts/
 
+# Nix build outputs
+/result
+/result-*
