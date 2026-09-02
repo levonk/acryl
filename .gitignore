@@ -17,3 +17,6 @@ release-artifacts/
 # Nix build outputs
 /result
 /result-*
+
+# Devbox generated artifacts (machine-local paths and scripts)
+.devbox/
