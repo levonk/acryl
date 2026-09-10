@@ -1,3 +1,21 @@
+## 2026-09-10 - Nix flake support (source build, prebuilt, desktop)
+
+Added a Nix flake (`flake.nix`, `flake.lock`) with three package outputs:
+`#acryl` (TUI from source, also `#default`), `#prebuilt` (prebuilt release
+tarball with bundled Node runtime), and `#acryl-desktop` (Electron desktop
+from source). The source build uses `stdenv.mkDerivation` + `fetchPnpmDeps`
++ `pnpmConfigHook` with `nodeLinker: hoisted` to handle the pnpm monorepo
+layout. The prebuilt output is conditionally exposed only on platforms with
+a release asset (v0.1.36 does not ship darwin-x64). A `devShells.default`
+and `devbox.json`/`devbox.lock` provide reproducible development environments.
+
+CI (`.github/workflows/nix.yml`) builds all four outputs on
+`x86_64-linux`, `aarch64-linux`, `aarch64-darwin`, and `x86_64-darwin`
+using `macos-26`/`macos-26-intel` runners. A hash-automation workflow
+(`.github/workflows/nix-release.yml`) runs daily, detects when `flake.nix`
+lags behind the latest GitHub release, prefetches new SRI hashes, and
+opens a PR — no manual hash maintenance needed.
+
 ## 2026-09-09 - DSH bumped to v0.1.5-alpha.1
 
 Commits: `712b957181ce2e371fffdf35c465ee027c8b6d54`,
