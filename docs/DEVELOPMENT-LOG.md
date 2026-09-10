@@ -1,5 +1,7 @@
 ## 2026-09-10 - Nix flake support (source build, prebuilt, desktop)
 
+Commit: `97b1cb02efef480bc980efe99625680dda7fea29`
+
 Added a Nix flake (`flake.nix`, `flake.lock`) with three package outputs:
 `#acryl` (TUI from source, also `#default`), `#prebuilt` (prebuilt release
 tarball with bundled Node runtime), and `#acryl-desktop` (Electron desktop
